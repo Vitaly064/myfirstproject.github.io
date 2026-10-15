@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ТеплоИзолПро — Теплоизоляция трубопроводов, ИТП и холодильного оборудования</title>
+<meta name="description" content="Профессиональные теплоизоляционные работы трубопроводов, ИТП и холодильного оборудования. Гарантия качества, опытные монтажники.">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --primary: #0d47a1;
+    --accent: #ff6f00;
+    --dark: #1a2332;
+    --light: #f5f7fa;
+    --text: #333;
+    --muted: #6b7280;
+  }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    color: var(--text);
+    line-height: 1.6;
+    background: #fff;
+  }
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+
+  /* HEADER */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.98);
+    box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+    backdrop-filter: blur(10px);
+  }
+  .nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 18px 0;
+  }
+  .logo {
+    font-size: 24px; font-weight: 800; color: var(--primary);
+    display: flex; align-items: center; gap: 8px;
+  }
+  .logo span { color: var(--accent); }
+  .logo-icon {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 20px;
+  }
+  nav ul { display: flex; gap: 30px; list-style: none; }
+  nav a {
+    color: var(--text); text-decoration: none; font-weight: 500;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--primary); }
+  .btn {
+    display: inline-block; padding: 12px 26px; border-radius: 8px;
+    background: var(--accent); color: #fff !important; font-weight: 600;
+    text-decoration: none; border: none; cursor: pointer;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(255,111,0,.3); }
+  .btn-outline {
+    background: transparent; border: 2px solid #fff;
+    color: #fff !important;
+  }
+  .btn-outline:hover { background: #fff; color: var(--primary) !important; }
+  .burger { display: none; font-size: 26px; background: none; border: none; cursor: pointer; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, #0a1f44 0%, #0d47a1 60%, #1565c0 100%);
+    color: #fff; padding: 100px 0 120px;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; top: -50%; right: -20%;
+    width: 800px; height: 800px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,111,0,.25), transparent 70%);
+  }
+  .hero-content { position: relative; max-width: 750px; }
+  .hero h1 {
+    font-size: clamp(32px, 5vw, 52px); line-height: 1.15;
+    margin-bottom: 20px; font-weight: 800;
+  }
+  .hero h1 span { color: var(--accent); }
+  .hero p {
+    font-size: 18px; opacity: .9; margin-bottom: 35px; max-width: 620px;
+  }
+  .hero-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+  .hero-stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 30px; margin-top: 70px; position: relative;
+  }
+  .stat h3 {
+    font-size: 40px; color: var(--accent); font-weight: 800; line-height: 1;
+  }
+  .stat p { font-size: 14px; opacity: .8; margin-top: 8px; }
+
+  /* SECTIONS */
+  section { padding: 90px 0; }
+  .section-title {
+    text-align: center; margin-bottom: 60px;
+  }
+  .section-title h2 {
+    font-size: clamp(26px, 4vw, 38px); color: var(--dark);
+    font-weight: 800; margin-bottom: 12px;
+  }
+  .section-title p { color: var(--muted); font-size: 17px; max-width: 650px; margin: 0 auto; }
+  .section-title h2 span { color: var(--accent); }
+
+  /* SERVICES */
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  .service-card {
+    background: #fff; border: 1px solid #e5e9f0; border-radius: 16px;
+    padding: 35px 30px;
+    transition: transform .3s, box-shadow .3s, border-color .3s;
+    position: relative; overflow: hidden;
+  }
+  .service-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 100%; height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--accent));
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s;
+  }
+  .service-card:hover::before { transform: scaleX(1); }
+  .service-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 20px 40px rgba(13,71,161,.1);
+    border-color: transparent;
+  }
+  .service-icon {
+    width: 60px; height: 60px; border-radius: 14px;
+    background: linear-gradient(135deg, #e3ecf9, #d4e3f7);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 30px; margin-bottom: 22px;
+  }
+  .service-card h3 {
+    font-size: 20px; color: var(--dark); margin-bottom: 12px; font-weight: 700;
+  }
+  .service-card p { color: var(--muted); font-size: 15px; }
+  .service-card ul {
+    margin-top: 15px; list-style: none;
+  }
+  .service-card li {
+    color: var(--muted); font-size: 14px; padding: 5px 0 5px 22px;
+    position: relative;
+  }
+  .service-card li::before {
+    content: '✓'; position: absolute; left: 0;
+    color: var(--accent); font-weight: 700;
+  }
+
+  /* WHY US */
+  .why { background: var(--light); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 25px;
+  }
+  .why-item {
+    background: #fff; padding: 30px 25px; border-radius: 12px;
+    text-align: center; transition: transform .3s;
+  }
+  .why-item:hover { transform: translateY(-5px); }
+  .why-item .num {
+    font-size: 42px; font-weight: 800; color: var(--accent);
+    line-height: 1;
+  }
+  .why-item h4 {
+    margin: 12px 0 8px; color: var(--dark); font-size: 17px;
+  }
+  .why-item p { color: var(--muted); font-size: 14px; }
+
+  /* PROCESS */
+  .process-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+  }
+  .process-step {
+    padding: 30px 25px; border-radius: 12px;
+    background: #fff; border: 1px solid #e5e9f0;
+    position: relative;
+  }
+  .process-step .step-num {
+    width: 45px; height: 45px; border-radius: 50%;
+    background: var(--primary); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 18px; margin-bottom: 18px;
+  }
+  .process-step h4 { color: var(--dark); margin-bottom: 8px; }
+  .process-step p { color: var(--muted); font-size: 14px; }
+
+  /* CONTACT */
+  .contact { background: var(--dark); color: #fff; }
+  .contact .section-title h2 { color: #fff; }
+  .contact .section-title p { color: #9aa5b8; }
+  .contact-wrap {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 50px;
+    align-items: start;
+  }
+  .contact-info-item {
+    display: flex; gap: 15px; margin-bottom: 25px;
+    align-items: flex-start;
+  }
+  .contact-info-item .ico {
+    width: 45px; height: 45px; flex-shrink: 0;
+    border-radius: 10px; background: rgba(255,111,0,.15);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+  }
+  .contact-info-item h5 { font-size: 14px; color: #9aa5b8; margin-bottom: 4px; font-weight: 500; }
+  .contact-info-item p, .contact-info-item a {
+    color: #fff; font-size: 16px; text-decoration: none; font-weight: 600;
+  }
+  .contact-info-item a:hover { color: var(--accent); }
+
+  form { display: flex; flex-direction: column; gap: 15px; }
+  form input, form textarea {
+    padding: 14px 18px; border-radius: 10px;
+    border: 1px solid #2d3a50; background: #232f42;
+    color: #fff; font-size: 15px; font-family: inherit;
+    transition: border-color .2s;
+  }
+  form input::placeholder, form textarea::placeholder { color: #7c8899; }
+  form input:focus, form textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  form textarea { resize: vertical; min-height: 110px; }
+  form .btn { align-self: flex-start; }
+
+  /* FOOTER */
+  footer {
+    background: #121a26; color: #7c8899;
+    padding: 30px 0; text-align: center; font-size: 14px;
+  }
+
+  /* MODAL */
+  .modal-overlay {
+    position: fixed; inset: 0; background: rgba(10,20,40,.7);
+    display: none; align-items: center; justify-content: center;
+    z-index: 999; padding: 20px;
+  }
+  .modal-overlay.active { display: flex; }
+  .modal {
+    background: #fff; padding: 40px; border-radius: 16px;
+    max-width: 500px; width: 100%; position: relative;
+    animation: modalIn .3s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .modal-close {
+    position: absolute; top: 15px; right: 20px;
+    background: none; border: none; font-size: 28px;
+    cursor: pointer; color: var(--muted);
+  }
+  .modal h3 { color: var(--dark); margin-bottom: 10px; }
+  .modal p { color: var(--muted); margin-bottom: 20px; font-size: 15px; }
+  .modal form input, .modal form textarea {
+    background: #f5f7fa; border: 1px solid #e0e5ec; color: var(--text);
+  }
+  .modal form input::placeholder, .modal form textarea::placeholder { color: #9aa5b8; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .contact-wrap { grid-template-columns: 1fr; }
+    .hero-stats { grid-template-columns: 1fr; gap: 20px; }
+  }
+  @media (max-width: 768px) {
+    nav ul {
+      display: none; position: absolute; top: 100%; left: 0; right: 0;
+      background: #fff; flex-direction: column; padding: 20px;
+      gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,.1);
+    }
+    nav ul.active { display: flex; }
+    .burger { display: block; }
+    section { padding: 60px 0; }
+    .hero { padding: 60px 0 80px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="container">
+    <div class="nav">
+      <div class="logo">
+        <div class="logo-icon">❄</div>
+        Тепло<span>Изол</span>Про
+      </div>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="#services">Услуги</a></li>
+          <li><a href="#why">О нас</a></li>
+          <li><a href="#process">Как работаем</a></li>
+          <li><a href="#contacts">Контакты</a></li>
+        </ul>
+      </nav>
+      <button class="btn" onclick="openModal()">Заявка</button>
+      <button class="burger" onclick="document.getElementById('navMenu').classList.toggle('active')">☰</button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Теплоизоляция <span>трубопроводов, ИТП</span> и холодильного оборудования</h1>
+      <p>Выполняем полный комплекс теплоизоляционных работ для промышленных и коммерческих объектов. Соблюдаем сроки, работаем по СНиП и СП, даём гарантию до 5 лет.</p>
+      <div class="hero-buttons">
+        <button class="btn" onclick="openModal()">Получить расчёт</button>
+        <a href="#services" class="btn btn-outline">Наши услуги</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <h3>12+</h3>
+          <p>лет на рынке теплоизоляции</p>
+        </div>
+        <div class="stat">
+          <h3>850+</h3>
+          <p>выполненных объектов</p>
+        </div>
+        <div class="stat">
+          <h3>5 лет</h3>
+          <p>гарантия на все работы</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-title">
+      <h2>Наши <span>услуги</span></h2>
+      <p>Профессиональная теплоизоляция инженерных систем любой сложности</p>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <div class="service-icon">🔧</div>
+        <h3>Теплоизоляция трубопроводов</h3>
+        <p>Изоляция труб отопления, ГВС, ХВС, паропроводов и технологических линий.</p>
+        <ul>
+          <li>Минеральная вата, ППУ, ППМ</li>
+          <li>Цилиндры и скорлупы</li>
+          <li>Тепловой расчёт толщины</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🏭</div>
+        <h3>Изоляция ИТП и ЦТП</h3>
+        <p>Комплексная изоляция индивидуальных тепловых пунктов под ключ.</p>
+        <ul>
+          <li>Изоляция теплообменников</li>
+          <li>Изоляция насосов и арматуры</li>
+          <li>Оформление по проекту</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">❄</div>
+        <h3>Холодильное оборудование</h3>
+        <p>Изоляция холодильных камер, чиллеров, фреоновых и аммиачных трасс.</p>
+        <ul>
+          <li>Каучуковая изоляция (K-Flex)</li>
+          <li>Пенополиуретан</li>
+          <li>Защита от конденсата</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🛡</div>
+        <h3>Защитные покрытия</h3>
+        <p>Покровные слои для защиты изоляции от внешних воздействий.</p>
+        <ul>
+          <li>Оцинкованная сталь</li>
+          <li>Алюминиевые листы</li>
+          <li>Стеклопластик, ПВХ</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">📐</div>
+        <h3>Проектирование</h3>
+        <p>Разработка проектной документации для теплоизоляционных работ.</p>
+        <ul>
+          <li>Теплотехнический расчёт</li>
+          <li>Спецификация материалов</li>
+          <li>Согласование</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <div class="service-icon">🔍</div>
+        <h3>Обследование и ремонт</h3>
+        <p>Диагностика существующей изоляции и её восстановление.</p>
+        <ul>
+          <li>Тепловизионное обследование</li>
+          <li>Дефектные ведомости</li>
+          <li>Демонтаж и замена</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="section-title">
+      <h2>Почему <span>выбирают нас</span></h2>
+      <p>Работаем с частными заказчиками, застройщиками и промышленными предприятиями</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="num">100%</div>
+        <h4>Соблюдение сроков</h4>
+        <p>Фиксируем даты в договоре и сдаём объект вовремя</p>
+      </div>
+      <div class="why-item">
+        <div class="num">СНиП</div>
+        <h4>Соответствие нормам</h4>
+        <p>Работы выполняются по СП 61.13330 и ГОСТ</p>
+      </div>
+      <div class="why-item">
+        <div class="num">5 лет</div>
+        <h4>Гарантия качества</h4>
+        <p>Официальная гарантия на материалы и монтаж</p>
+      </div>
+      <div class="why-item">
+        <div class="num">0₽</div>
+        <h4>Выезд замерщика</h4>
+        <p>Бесплатный выезд по Москве и области</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-title">
+      <h2>Как мы <span>работаем</span></h2>
+      <p>Прозрачный процесс от заявки до сдачи объекта</p>
+    </div>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>Заявка и замер</h4>
+        <p>Принимаем заявку, выезжаем на объект и делаем замеры бесплатно</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>Смета и договор</h4>
+        <p>Готовим подробный расчёт и заключаем официальный договор</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>Монтаж</h4>
+        <p>Выполняем теплоизоляционные работы опытные монтажники</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>Сдача и гарантия</h4>
+        <p>Принимаем объект, выдаём акты и гарантийный талон</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contacts">
+  <div class="container">
+    <div class="section-title">
+      <h2>Свяжитесь <span style="color:var(--accent)">с нами</span></h2>
+      <p>Оставьте заявку — рассчитаем стоимость в течение 2 часов</p>
+    </div>
+    <div class="contact-wrap">
+      <div>
+        <div class="contact-info-item">
+          <div class="ico">📞</div>
+          <div>
+            <h5>Телефон</h5>
+            <a href="tel:+74951234567">+7 (495) 123-45-67</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ico">✉</div>
+          <div>
+            <h5>Email</h5>
+            <a href="mailto:info@teploizolpro.ru">info@teploizolpro.ru</a>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ico">📍</div>
+          <div>
+            <h5>Адрес</h5>
+            <p>г. Москва, ул. Промышленная, 12, офис 305</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="ico">🕒</div>
+          <div>
+            <h5>Режим работы</h5>
+            <p>Пн–Пт: 9:00 – 19:00</p>
+          </div>
+        </div>
+      </div>
+
+      <form id="mainForm" onsubmit="submitForm(event)">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="tel" name="phone" placeholder="Телефон" required>
+        <input type="email" name="email" placeholder="Email (необязательно)">
+        <textarea name="message" placeholder="Опишите объект: тип трубопровода, длина, материал изоляции и т.д."></textarea>
+        <button type="submit" class="btn">Отправить заявку</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    © 2025 ТеплоИзолПро. Теплоизоляционные работы трубопроводов, ИТП и холодильного оборудования.
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <h3>Заявка на расчёт</h3>
+    <p>Оставьте контакты — перезвоним в течение 15 минут</p>
+    <form onsubmit="submitModal(event)">
+      <input type="text" name="name" placeholder="Ваше имя" required style="width:100%;margin-bottom:12px;padding:14px 18px;border-radius:10px;">
+      <input type="tel" name="phone" placeholder="Телефон" required style="width:100%;margin-bottom:12px;padding:14px 18px;border-radius:10px;">
+      <button type="submit" class="btn">Отправить</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  // Плавная прокрутка
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) {
+        window.scrollTo({ top: t.offsetTop - 80, behavior: 'smooth' });
+        document.getElementById('navMenu').classList.remove('active');
+      }
+    });
+  });
+
+  // Модальное окно
+  function openModal() {
+    document.getElementById('modal').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('modal').addEventListener('click', e => {
+    if (e.target.id === 'modal') closeModal();
+  });
+
+  // Отправка форм
+  function submitForm(e) {
+    e.preventDefault();
+    alert('Спасибо! Ваша заявка отправлена. Мы свяжемся с вами в ближайшее время.');
+    e.target.reset();
+  }
+  function submitModal(e) {
+    e.preventDefault();
+    alert('Спасибо! Заявка принята. Перезвоним в течение 15 минут.');
+    e.target.reset();
+    closeModal();
+  }
+</script>
+
+</body>
+</html>
